@@ -1,0 +1,10 @@
+{
+    "id": "player_box",
+    "version": "1.0.1",
+    "name": "player_box",
+    "author": "Tcilay",
+    "link": "https://github.com/Tcilay-xi/mcdr-plugin/tree/main/player_box",
+    "dependencies": {
+      "minecraft_data_api": "*"
+    }
+  }

@@ -1,0 +1,27 @@
+name: Pack and Upload Plugins
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python 
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+        
+    - name: Install dependencies  
+      run: |
+        python -m pip install --upgrade pip
+        pip install mcdreforged
+        
+    - name: Run pack script
+      run: |
+        python pack.py
+        
+    - uses: actions/upload-artifact@v3
+      with:
+        name: plugins 
+        path: packed-plugins
