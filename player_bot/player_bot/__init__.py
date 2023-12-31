@@ -64,25 +64,22 @@ def player_action(source: CommandSource, dic: dict):
     action = str(dic.get("action"))
     player = source.player
     name = bot_Prefix +dic.get("bot")
+    if action == "spawn":
+        coord = api.get_player_coordinate(player)
+        dim = api.get_player_dimension(player)
+        dim_text = get_dimension_translation_text(dim)
+        server.execute('execute in {0} run player {1} spawn at {2} {3} {4}'.format(dim_text, name, coord.x, coord.y, coord.z))
+    elif action == "tp":
+        server.execute('tp ' + name + " " + player)
+    elif action == "kill":
+        server.execute('player ' + name + " kill")
+    elif action == "stop":
+        server.execute('player ' + name + " stop")
+    elif action == "swapHands":
+        server.execute('player ' + name + " swapHands")
+    else:
+        source.reply("§c§l错误的指令")
 
-    match action:
-        case "spawn":
-            coord = api.get_player_coordinate(player)
-            dim = api.get_player_dimension(player)
-            dim_text = get_dimension_translation_text(dim)
-            server.execute('execute in {0} run player {1} spawn at {2} {3} {4}'.format(dim_text, name, coord.x, coord.y, coord.z))
-
-
-        case "tp":
-            server.execute('tp ' +name + " "+player)
-        case "kill":
-            server.execute('player '+name + " kill")
-        case "stop":
-            server.execute('player '+name + " stop")
-        case "swapHands":
-            server.execute('player '+name + " swapHands")
-        case _:
-            source.reply("§c§l错误的指令")
 
 def player_action_1(source: CommandSource, dic: dict):
     if source.is_player == False:
@@ -92,23 +89,23 @@ def player_action_1(source: CommandSource, dic: dict):
     server = source.get_server()
     action = str(dic.get("action"))
     name = bot_Prefix +dic.get("bot")
-    match action:
-        case "use":
-            server.execute('player '+ name + ' use '+dic.get("other"))
-        case "attack":
-            server.execute('player '+ name +' attack '+dic.get("other"))
-        case "jump":
-            server.execute('player '+ name +' jump '+dic.get("other"))
-        case "move":
-            server.execute('player '+ name +' move '+dic.get("other"))
-        case "look":
-            server.execute('player '+ name +' look '+dic.get("other"))
-        case "drop":
-            server.execute('player '+ name +' drop '+dic.get("other"))
-        case "dropStack":
-            server.execute("player "+ name + " dropStack "+dic.get("other"))
-        case _:
-            source.reply("§c§l错误的指令")
+    other = dic.get("other"))
+    if action == "use":
+        server.execute('player ' + name + ' use ' + other)
+    elif action == "attack":
+        server.execute('player ' + name + ' attack ' + other)
+    elif action == "jump":
+        server.execute('player ' + name + ' jump ' + other)
+    elif action == "move":
+        server.execute('player ' + name + ' move ' + other)
+    elif action == "look":
+        server.execute('player ' + name + ' look ' + other)
+    elif action == "drop":
+        server.execute('player ' + name + ' drop ' + other)
+    elif action == "dropStack":
+        server.execute("player " + name + " dropStack " + other)
+    else:
+        source.reply("§c§l错误的指令")
 
 
 def on_load(server, prev_module):
