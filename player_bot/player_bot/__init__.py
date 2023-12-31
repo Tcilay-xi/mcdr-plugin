@@ -87,9 +87,9 @@ def player_action_1(source: CommandSource, dic: dict):
         return
     
     server = source.get_server()
-    action = str(dic.get("action"))
+    action = str(dic.get("action")
     name = bot_Prefix +dic.get("bot")
-    other = dic.get("other"))
+    other = dic.get("other")
     if action == "use":
         server.execute('player ' + name + ' use ' + other)
     elif action == "attack":
