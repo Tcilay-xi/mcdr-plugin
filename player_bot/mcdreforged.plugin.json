@@ -1,0 +1,10 @@
+{
+    "id": "player_bot",
+    "version": "1.0.1",
+    "name": "player_bot",
+    "author": "Tcilay",
+    "link": "https://github.com/Tcilay-xi/mcdr-plugin/tree/main/player_bot",
+    "dependencies": {
+      "minecraft_data_api": "*"
+    }
+  }
