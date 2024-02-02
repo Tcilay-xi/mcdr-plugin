@@ -1,5 +1,9 @@
 name: Pack and Upload Plugins
-on: [push]
+on:
+  push:
+    branches:
+      - main
+
 
 jobs:
   build:
